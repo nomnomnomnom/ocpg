@@ -4,7 +4,7 @@ html {
   background-color: white;
 }
 body {
-  background: linear-gradient(to bottom, black 0%, #a2a2c9 400px);
+  background: linear-gradient(to bottom, black 0%, #5e7ca4 400px);
   background-attachment: fixed;
   color: #eee;
   font-family: 'Lora', serif;
@@ -123,6 +123,9 @@ a {
       &.visible {
         transform: translateY(0) scale(1);
       }
+    }
+    .link {
+      margin-bottom: 8px;
     }
   }
 }

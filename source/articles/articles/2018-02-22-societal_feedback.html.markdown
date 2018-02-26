@@ -73,6 +73,9 @@ highlight in red and the causes of the event become green.
 
 <div style="text-align: center;"><svg id="map2" width="800" height="700"></svg></div>
 
+Again, it's not accurate data, yet.  If you have knowledge about even a small subset of this
+information, we'd be happy to have your input!
+
 
 <style>
   #map1 .links line {
