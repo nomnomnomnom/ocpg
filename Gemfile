@@ -6,4 +6,4 @@ gem 'middleman-autoprefixer', '~> 2.7'
 gem 'middleman-blog'
 gem 'readingtime'
 
-gem 'neocities'
+gem 'middleman-gh-pages'
