@@ -283,10 +283,11 @@ body.blog-body {
     }
     .prev-next {
       margin-bottom: 60px;
+      font-size: 12px;
       a {
-        color: $prevNextColor;
+        color: $blue2;
         &:hover {
-          color: $blue2;
+          color: $blue1;
         }
       }
     }
