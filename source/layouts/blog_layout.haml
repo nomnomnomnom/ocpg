@@ -1,0 +1,59 @@
+!!! 5
+%html
+  %head
+    %meta{charset: "utf-8"}
+    %meta{"http-equiv" => "x-ua-compatible", content: "ie=edge"}
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1, shrink-to-fit=no"}
+
+    %title= current_page.data.title || "OSD"
+    = stylesheet_link_tag "site"
+    = javascript_include_tag "site"
+    = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"
+  %body.blog-body
+    .blog
+      .header
+        %h1
+
+          = link_to '<div class="small-logo"></div>OCPG Open Civic Policy Group'.html_safe, '/index.html'
+
+      %article
+        - if current_article
+
+          %h1= current_article.title
+
+          .estimated-read-time
+            Approximate Read time:
+            = current_article.body.reading_time format: :approx
+
+          .prev-next
+            - if current_article.article_previous
+              = link_to 'Previous', current_article.article_previous
+
+            - if current_article.article_next
+              = link_to 'Next', current_article.article_next
+
+
+        = yield
+
+      - if false #current_article
+        #disqus_thread
+        :javascript
+          /**
+          *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+          *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+          var disqus_config = function () {
+          this.page.url = "https://osd.neocities.org/" + #{current_page.url.to_json};
+          this.page.identifier = #{current_page.url.to_json};
+          };
+          (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://osd-tactics.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })();
+
+
+    %section.footer
+      .copyright
+        © 2018 OCPG Open Civic Policy Group

@@ -1,0 +1,501 @@
+---
+title: Why we're here and what we do
+date: 2018-02-22 07:45 UTC
+tags:
+---
+
+## Fix negative societal feedback loops
+
+We are a distributed group of interested active members of society who want to help
+make a difference because some problems are large, complex, and need to be attacked
+from multiple angles using sound methodology and strong research analysis.
+
+The work we do primarily involves:
+
+   1. collecting information,
+       * specifically: causal relationships, scientific evidence to support it,
+         and scientific evidence to refute false causal relationships.
+   2. grading the evidence "strength", and
+   3. analyzing the relationships to formulate policy recommendations and plans
+      of action
+
+We also highly value work around awareness of our cause and networking with individuals
+who can be instrumental in executing the plans of action.
+
+We want everybody's help.  Contact us for everything from fixing grammar in these docs,
+writing open-collaboration software, starting meet-ups, aligning research... Join
+in and make a difference!
+
+That said, let's get right into it.
+
+## What are Negative Societal Feedback Loops?
+
+All things have effects.  When an effect is negative and can contribute to causing
+the same negative thing again, this is a negative feedback loop.  In society, we
+have many of these.  A possible example is when
+
+  1. a decrease in school funding
+  2. hinders child development which
+  2. increases need for social services then possibly
+  3. fewer tax dollars to go toward school funding
+
+This line of thought, however, cannot be asserted without appropriate evidence
+to back it up.
+
+This is complicated because at the big-picture "societal" level there are an intimidating
+number of complex confounding factors that must be considered in any effort to
+make improvements.
+
+
+<div class="emphasis">
+Note: This is a <em>live document</em> - it will be updated as we assemble more information.
+</div>
+
+Consider the graph below of some negative events and their negative outcomes.
+
+<svg id="map1" width="800" height="400"></svg>
+
+It's a mess! In that graph, events are connected to outcomes that are directly caused by the
+event itself. Because many of the events contribute to a large number of
+negative outcomes, and those outcomes also contribute to a large number of
+negative outcomes of their own, it's hard to tease apart the flow of causation
+and you can easily see why these problems don't have easy solutions. Even if you try to
+drag nodes away from other nodes to help visualize, it's still a jumble of feedback loops.
+
+<div class="emphasis">
+Disclaimer: Don't trust this information yet because we are still in the process of collecting
+data and haven't established data quality.
+</div>
+
+Below is another graph of the same information that works a bit better for
+tracking down immediate causes.  When you hover over an event, the resulting events
+highlight in red and the causes of the event become green.
+
+<div style="text-align: center;"><svg id="map2" width="800" height="700"></svg></div>
+
+
+<style>
+  #map1 .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+  }
+
+  #map1 .nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+
+  #map1 text {
+    font-size: 10px;
+  }
+
+  #map2 .node {
+    font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    fill: #777;
+  }
+
+  #map2 .node:hover {
+    fill: #000;
+  }
+
+  #map2 .link {
+    stroke: steelblue;
+    stroke-opacity: 0.4;
+    fill: none;
+    pointer-events: none;
+  }
+
+  #map2 .node:hover,
+  #map2 .node--source,
+  #map2 .node--target {
+    font-weight: 700;
+    cursor: default;
+  }
+
+  #map2 .node--source {
+    fill: #2ca02c;
+  }
+
+  #map2 .node--target {
+    fill: #d62728;
+  }
+
+  #map2 .node--source.node--target {
+    fill: #d62728;
+  }
+
+  #map2 .link--source,
+  #map2 .link--target {
+    stroke-opacity: 1;
+    stroke-width: 2px;
+  }
+
+  #map2 .link--source {
+    stroke: #d62728;
+  }
+
+  #map2 .link--target {
+    stroke: #2ca02c;
+  }
+
+  #map2 .link--source.link--target {
+    stroke: #d62728;
+  }
+
+  #map2 marker-end {
+    opacity: 0;
+  }
+
+  #map2 .link--source marker-end,
+  #map2 .link--target marker-end {
+    opacity: 1;
+    fill: inherit;
+  }
+
+  #map2 #arrow2 {
+    fill: #d62728;
+  }
+</style>
+
+
+<script type="text/javascript">
+/*
+```javascript
+*/
+  function dataCopy() {
+    var data = {
+      nodes: [
+        { id: 'war_on_drugs', name: 'War on drugs' },
+        { id: 'medication_access', name: 'Restricts access to medication' },
+        { id: 'criminalizes_acceptable_behavior', name: 'Criminalizes common acceptable behavior' },
+        { id: 'prevents_drug_awareness', name: 'Prevents drug "harm/safety" awareness' },
+        { id: 'breaks_families_apart', name: 'Breaks families apart' },
+        { id: 'increases_financial_burden', name: 'Increases financial burden' },
+        { id: 'encourages_black_markets', name: 'Encourages black markets' },
+        { id: 'increases_violence', name: 'Increases violence' },
+        { id: 'hinders_child_development', name: 'Hinders child development' },
+        { id: 'used_as_reason_for_war_on_drugs', name: 'Used as reason for War on Drugs' },
+        { id: 'schools_defunded', name: 'Schools defunded' },
+        { id: 'loss_of_community', name: 'Loss of Community' },
+        { id: 'stereotypes_develop', name: 'Stereotypes and Biases Develop' },
+        { id: 'biased_policing_and_police_distrust', name: 'Biased Policing and Police Distrust' },
+        { id: 'us_vs_them', name: '"Us vs. them" attitude' },
+        { id: 'fend_for_ourselves', name: '"Fend for ourselves" attitude' },
+        { id: 'gangs_and_turf_wars', name: 'Gangs and Turf Wars emerge' },
+        { id: 'increases_incarceration', name: 'Increases Incarceration' },
+        { id: 'labeled_criminal', name: 'Lifelong labels "criminal" and "felon"' },
+        { id: 'likely_recidivism', name: 'Increases recidivism likelihood' },
+        { id: 'loss_of_voice', name: 'Loss of Voice (and Vote)' },
+      ],
+      links: [
+        { source: 'war_on_drugs', target: 'medication_access', value: 100 },
+        { source: 'war_on_drugs', target: 'criminalizes_acceptable_behavior', value: 100 },
+        { source: 'war_on_drugs', target: 'prevents_drug_awareness', value: 100 },
+        { source: 'medication_access', target: 'fend_for_ourselves', value: 1 },
+        { source: 'medication_access', target: 'encourages_black_markets', value: 100 },
+        { source: 'prevents_drug_awareness', target: 'breaks_families_apart', value: 1 },
+        { source: 'breaks_families_apart', target: 'increases_financial_burden', value: 80 },
+        { source: 'breaks_families_apart', target: 'hinders_child_development', value: 100 },
+        { source: 'used_as_reason_for_war_on_drugs', target: 'war_on_drugs', value: 100 },
+        { source: 'criminalizes_acceptable_behavior', target: 'encourages_black_markets', value: 100 },
+        { source: 'criminalizes_acceptable_behavior', target: 'stereotypes_develop', value: 80 },
+        { source: 'criminalizes_acceptable_behavior', target: 'increases_incarceration', value: 100 },
+        { source: 'encourages_black_markets', target: 'increases_violence', value: 50 },
+        { source: 'encourages_black_markets', target: 'gangs_and_turf_wars', value: 100 },
+        { source: 'encourages_black_markets', target: 'fend_for_ourselves', value: 100 },
+        { source: 'increases_financial_burden', target: 'hinders_child_development', value: 100 },
+        { source: 'increases_financial_burden', target: 'breaks_families_apart', value: 1 },
+        { source: 'increases_financial_burden', target: 'medication_access', value: 1 },
+        { source: 'increases_violence', target: 'hinders_child_development', value: 100 },
+        { source: 'increases_violence', target: 'used_as_reason_for_war_on_drugs', value: 1 },
+        { source: 'increases_violence', target: 'loss_of_community', value: 1 },
+        { source: 'increases_violence', target: 'stereotypes_develop', value: 80 },
+        { source: 'increases_violence', target: 'increases_financial_burden', value: 80 },
+        { source: 'hinders_child_development', target: 'schools_defunded', value: 1 },
+        { source: 'hinders_child_development', target: 'stereotypes_develop', value: 1 },
+        { source: 'schools_defunded', target: 'hinders_child_development', value: 100 },
+        { source: 'stereotypes_develop', target: 'used_as_reason_for_war_on_drugs', value: 80 },
+        { source: 'stereotypes_develop', target: 'biased_policing_and_police_distrust', value: 100 },
+        { source: 'loss_of_community', target: 'us_vs_them', value: 100 },
+        { source: 'loss_of_community', target: 'fend_for_ourselves', value: 100 },
+        { source: 'loss_of_community', target: 'gangs_and_turf_wars', value: 1 },
+        { source: 'fend_for_ourselves', target: 'us_vs_them', value: 100 },
+        { source: 'us_vs_them', target: 'fend_for_ourselves', value: 100 },
+        { source: 'us_vs_them', target: 'biased_policing_and_police_distrust', value: 100 },
+        { source: 'biased_policing_and_police_distrust', target: 'us_vs_them', value: 100 },
+        { source: 'biased_policing_and_police_distrust', target: 'increases_violence', value: 100 },
+        { source: 'gangs_and_turf_wars', target: 'used_as_reason_for_war_on_drugs', value: 1 },
+        { source: 'gangs_and_turf_wars', target: 'fend_for_ourselves', value: 80 },
+        { source: 'gangs_and_turf_wars', target: 'stereotypes_develop', value: 100 },
+        { source: 'gangs_and_turf_wars', target: 'increases_violence', value: 100 },
+        { source: 'increases_incarceration', target: 'labeled_criminal', value: 100 },
+        { source: 'increases_incarceration', target: 'likely_recidivism', value: 100 },
+        { source: 'increases_incarceration', target: 'loss_of_voice', value: 100 },
+        { source: 'increases_incarceration', target: 'increases_financial_burden', value: 100 },
+        { source: 'increases_incarceration', target: 'increases_violence', value: 100 },
+        { source: 'labeled_criminal', target: 'used_as_reason_for_war_on_drugs', value: 100 },
+        { source: 'labeled_criminal', target: 'stereotypes_develop', value: 100 },
+        { source: 'labeled_criminal', target: 'increases_financial_burden', value: 100 },
+        { source: 'likely_recidivism', target: 'used_as_reason_for_war_on_drugs', value: 1 },
+        { source: 'likely_recidivism', target: 'stereotypes_develop', value: 1 },
+        { source: 'likely_recidivism', target: 'breaks_families_apart', value: 10 },
+      ]
+    }
+
+    return JSON.parse(JSON.stringify(data))
+  }
+
+  // Map #1
+  ;(() => {
+    var data = dataCopy()
+    var svg = d3.select('svg#map1')
+    var width = +svg.attr('width')
+    var height = +svg.attr('height')
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+    var defs = svg.append('defs');
+    defs.append('svg:marker')
+      .attr('id', 'arrowGray')
+      .attr('viewBox', '0 0 10 10')
+      .attr('refX', '10')
+      .attr('refY', '5')
+      .attr('markerUnits', 'strokeWidth')
+      .attr('markerWidth', '7')
+      .attr('markerHeight', '3')
+      .attr('orient', 'auto')
+      .append('svg:path')
+      .attr('d', 'M 0 0 L 10 5 L 0 10 z')
+      .attr('fill', 'rgba(0,0,0,0)');
+
+    var simulation = d3.forceSimulation()
+      .force('link', d3.forceLink()
+        .id(d => d.id)
+        .strength(d => Math.sqrt((d.value + 10) / 10000))
+        .distance(d => 100)
+      )
+      .force('charge', d3.forceManyBody())
+      .force('center', d3.forceCenter(width / 2, height / 2));
+
+    var link = svg.append('g')
+      .attr('class', 'links')
+      .selectAll('line')
+      .data(data.links)
+      .enter().append('line')
+      .attr('marker-end', 'url(#arrowGray)')
+      .attr('stroke-width', function(d) { return Math.sqrt(d.value / 10); });
+
+    var node = svg.selectAll('.node')
+      .data(data.nodes)
+      .enter().append('g')
+      .attr('class', 'nodes')
+      // .attr('transform', d => "translate(" + d.x + "px," + d.y + "px)")
+      .call(d3.drag()
+        .on('start', dragstarted)
+        .on('drag', dragged)
+        .on('end', dragended)
+      )
+
+    node.append('circle')
+      .attr('r', 9)
+      .attr('fill', function(d) { return color(d.group); })
+
+
+    node.append("text")
+      .attr("dx", 10)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.name })
+
+    node.append('title')
+      .text(function(d) { return d.name; });
+
+    simulation
+      .nodes(data.nodes)
+      .on('tick', ticked);
+
+    simulation.force('link')
+      .links(data.links);
+
+    function ticked() {
+      link
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y)
+
+      node
+        .attr('transform', d => "translate(" + parseFloat(d.x.toFixed(4)) + ", " + parseFloat(d.y.toFixed(4)) + ")")
+    }
+
+    function dragstarted(d) {
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+      if (!d3.event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+  })()
+
+  // Map #2
+  ;(() => {
+    var data = dataCopy()
+    var diameter = 760,
+    radius = diameter / 2,
+    innerRadius = radius - 200;
+
+    var cluster = d3.cluster()
+      .size([360, innerRadius]);
+
+    var svg = d3.select('svg#map2')
+      .attr('width', diameter)
+      .attr('height', diameter)
+      .append('g')
+      .attr('transform', 'translate(' + radius + ',' + radius + ')')
+
+    var defs = svg.append('defs');
+    defs.append('svg:marker')
+      .attr('id', 'arrow2')
+      .attr('viewBox', '0 0 10 10')
+      .attr('refX', '10')
+      .attr('refY', '5')
+      .attr('markerUnits', 'strokeWidth')
+      .attr('markerWidth', '10')
+      .attr('markerHeight', '5')
+      .attr('orient', 'auto')
+      .append('svg:path')
+      .attr('d', 'M 0 0 L 10 5 L 0 10 z')
+
+    var link = svg.append('g').selectAll('.link')
+    var node = svg.append('g').selectAll('.node')
+
+    var rootObj = { parent: null }
+    var idsToNodes = data.nodes.reduce((acc,n) => {
+      acc[n.id] = {
+        id: n.id, parent: rootObj //, childIds: data.links.filter(l => l.source === n.id).map(l => l.target)}
+      }
+      return acc
+    }, {})
+    rootObj.children = data.nodes.map(n => idsToNodes[n.id])
+
+    var root = d3.hierarchy(rootObj)
+      .sum(d => d.size)
+
+    cluster(root)
+
+    var nodes = root.children
+    idsToNodes = data.nodes.reduce((acc, n) => {
+      acc[n.id] = nodes.find(c => n.id === c.data.id)
+      return acc
+    }, {})
+    var links = data.links.map((d) => {
+      var source = idsToNodes[d.source]
+      var target = idsToNodes[d.target]
+      if (source === undefined) {
+        throw "could not find source"
+      }
+      if (target === undefined) {
+        throw "could not find target"
+      }
+      var result = [source, {x: (source.x + target.x) / 2, y: Math.abs(source.x - target.x) / 16}, target] //.concat(data.links.filter(l => l.source === d.source).map(l => idsToNodes[l.target]))
+      // result.push(target)
+      result.source = source
+      result.target = target
+      return result
+    })
+
+    link = link
+      .data(links)
+      .enter().append('path')
+        .attr('class', 'link')
+        .attr('d', (d) => {
+          var n = d[1].y / 180
+          n = Math.sqrt(n) * 3
+          var line = d3.radialLine()
+            .curve(d3.curveBundle.beta(n))
+            .radius(d => d.y)
+            .angle(d => d.x / 180 * Math.PI)
+          return line(d)
+        })
+        .attr('data-name', d => d.source.data.id + '--' + d.target.data.id)
+
+
+    node = node
+      .data(root.leaves())
+      .enter().append('text')
+        .attr('class', 'node')
+        .attr('dy', '0.31em')
+        .attr('transform', function(d) { return 'rotate(' + (d.x - 90) + ')translate(' + (d.y + 8) + ',0)' + (d.x < 180 ? '' : 'rotate(180)'); })
+        .attr('text-anchor', function(d) { return d.x < 180 ? 'start' : 'end'; })
+        .text(function(d) { return data.nodes.find(n => n.id === d.data.id).name; })
+        .on('mouseover', mouseovered)
+        .on('mouseout', mouseouted);
+
+    function bidirectional(source, target) {
+      return !!data.links.find((l) => {
+        return l.source === source.data.id && l.target === target.data.id
+      }) && data.links.find((l) => {
+        return l.source === target.data.id && l.target === source.data.id
+      })
+    }
+
+    function mouseovered(d) {
+      node
+        .each(function(n) { n.target = n.source = false; });
+
+      link
+        .classed("link--target", function(l) {
+          if (l.target === d) {
+            return l.source.source = true
+          }
+          if (l.source === d && bidirectional(l.target, d)) {
+            return true
+          }
+        })
+        .classed("link--source", function(l) {
+          if (l.source === d) {
+            return l.target.target = true
+          }
+          if (l.target === d && bidirectional(l.source, d)) {
+            return true
+          }
+        })
+        .attr('marker-end', (l) => {
+          return (l.source === d) ? 'url(#arrow2)' : ''
+        })
+        .filter(function(l) { return l.target === d || l.source === d; })
+        .raise();
+
+      node
+        .classed("node--target", function(n) { return n.target; })
+        .classed("node--source", function(n) { return n.source; });
+    }
+
+    function mouseouted(d) {
+      link
+        .classed("link--target", false)
+        .classed("link--source", false)
+        .attr('marker-end', '')
+
+      node
+        .classed("node--target", false)
+        .classed("node--source", false);
+    }
+  })()
+/*
+```
+*/
+</script>
+
+<script>
+  // Because I'm the last person remaining who prefers it this way.
+  // It has nothing to do with typewriters at this point, I just like it better.
+  Array.from(document.getElementsByTagName('p')).forEach(p => p.innerHTML = p.innerHTML.replace(/([\.|\!|\?])/g, '$1&nbsp; '))
+</script>
