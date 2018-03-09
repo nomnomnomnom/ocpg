@@ -4,13 +4,14 @@ date: 2018-02-22 07:45 UTC
 tags:
 ---
 
-## Fix negative societal feedback loops
+## We Fix Things
 
-We are a distributed group of interested active members of society who want to help
-make a difference because some problems are large, complex, and need to be attacked
-from multiple angles using sound methodology and strong research analysis.
+Some problems are large, complex, and need to be attacked
+from multiple angles using sound methodology and strong research analysis.  We
+build the tools and methods for analyzing these complex problems, we make them
+open source for everybody, and we apply them to evolving research sets.
 
-The work we do primarily involves:
+Fundamentally, the work we do primarily involves:
 
    1. collecting information,
        * specifically: causal relationships, scientific evidence to support it,
@@ -19,16 +20,17 @@ The work we do primarily involves:
    3. analyzing the relationships to formulate policy recommendations and plans
       of action
 
-We also highly value work around awareness of our cause and networking with individuals
+We also **highly** value work around awareness of our cause and networking with individuals
 who can be instrumental in executing the plans of action.
 
-We want everybody's help.  Contact us for everything from fixing grammar in these docs,
+**We want everybody's help**.  Message us [on our subreddit](https://www.reddit.com/r/ocpgdiscussion)
+for everything from fixing grammar in these docs,
 writing open-collaboration software, starting meet-ups, aligning research... Join
 in and make a difference!
 
 That said, let's get right into it.
 
-## What are Negative Societal Feedback Loops?
+## Negative Societal Feedback Loops
 
 All things have effects.  When an effect is negative and can contribute to causing
 the same negative thing again, this is a negative feedback loop.  In society, we
@@ -40,7 +42,8 @@ have many of these.  A possible example is when
   3. fewer tax dollars to go toward school funding
 
 This line of thought, however, cannot be asserted without appropriate evidence
-to back it up.
+to back it up (and the evidence must (1) be sufficiently strong and (2) apply to
+the target context).
 
 This is complicated because at the big-picture "societal" level there are an intimidating
 number of complex confounding factors that must be considered in any effort to
@@ -189,8 +192,17 @@ information, we'd be happy to have your input!
         { id: 'labeled_criminal', name: 'Lifelong labels "criminal" and "felon"' },
         { id: 'likely_recidivism', name: 'Increases recidivism likelihood' },
         { id: 'loss_of_voice', name: 'Loss of Voice (and Vote)' },
+        { id: 'increases_homelessness', name: 'Increases Homelessness' },
+        { id: 'increases_law_enforcement_costs', name: 'Increases Costs for Law Enforcement' },
+        { id: 'increases_health_care_costs', name: 'Increases Costs for Health Care' },
       ],
       links: [
+        { source: 'loss_of_community', target: 'increases_homelessness', value: 50 },
+        { source: 'increases_financial_burden', target: 'increases_homelessness', value: 100 },
+        { source: 'hinders_child_development', target: 'increases_homelessness', value: 100 },
+        { source: 'increases_health_care_costs', target: 'increases_financial_burden', value: 100 },
+        { source: 'increases_homelessness', target: 'increases_law_enforcement_costs', value: 100, references: ['hfh2017'] },
+        { source: 'increases_homelessness', target: 'increases_health_care_costs', value: 100, references: ['hfh2017'] },
         { source: 'war_on_drugs', target: 'medication_access', value: 100 },
         { source: 'war_on_drugs', target: 'criminalizes_acceptable_behavior', value: 100 },
         { source: 'war_on_drugs', target: 'prevents_drug_awareness', value: 100 },
@@ -222,6 +234,7 @@ information, we'd be happy to have your input!
         { source: 'loss_of_community', target: 'us_vs_them', value: 100 },
         { source: 'loss_of_community', target: 'fend_for_ourselves', value: 100 },
         { source: 'loss_of_community', target: 'gangs_and_turf_wars', value: 1 },
+        { source: 'loss_of_voice', target: 'war_on_drugs', value: 100 },
         { source: 'fend_for_ourselves', target: 'us_vs_them', value: 100 },
         { source: 'us_vs_them', target: 'fend_for_ourselves', value: 100 },
         { source: 'us_vs_them', target: 'biased_policing_and_police_distrust', value: 100 },
@@ -232,6 +245,7 @@ information, we'd be happy to have your input!
         { source: 'gangs_and_turf_wars', target: 'stereotypes_develop', value: 100 },
         { source: 'gangs_and_turf_wars', target: 'increases_violence', value: 100 },
         { source: 'increases_incarceration', target: 'labeled_criminal', value: 100 },
+        { source: 'increases_incarceration', target: 'stereotypes_develop', value: 100 },
         { source: 'increases_incarceration', target: 'likely_recidivism', value: 100 },
         { source: 'increases_incarceration', target: 'loss_of_voice', value: 100 },
         { source: 'increases_incarceration', target: 'increases_financial_burden', value: 100 },
@@ -242,7 +256,10 @@ information, we'd be happy to have your input!
         { source: 'likely_recidivism', target: 'used_as_reason_for_war_on_drugs', value: 1 },
         { source: 'likely_recidivism', target: 'stereotypes_develop', value: 1 },
         { source: 'likely_recidivism', target: 'breaks_families_apart', value: 10 },
-      ]
+      ],
+      references: {
+        hfh2017: {url: 'https://www.rand.org/pubs/research_reports/RR1694.html', needs: ['comparison_group']},
+      }
     }
 
     return JSON.parse(JSON.stringify(data))
@@ -407,7 +424,7 @@ information, we'd be happy to have your input!
       if (target === undefined) {
         throw "could not find target"
       }
-      var result = [source, {x: (source.x + target.x) / 2, y: Math.abs(source.x - target.x) / 16}, target] //.concat(data.links.filter(l => l.source === d.source).map(l => idsToNodes[l.target]))
+      var result = [source, {x: (source.x + target.x) / 2, y: Math.abs(source.x - target.x) / 64}, target] //.concat(data.links.filter(l => l.source === d.source).map(l => idsToNodes[l.target]))
       // result.push(target)
       result.source = source
       result.target = target
@@ -420,7 +437,7 @@ information, we'd be happy to have your input!
         .attr('class', 'link')
         .attr('d', (d) => {
           var n = d[1].y / 180
-          n = Math.sqrt(n) * 3
+          n = Math.sqrt(Math.sqrt(n)) * 2
           var line = d3.radialLine()
             .curve(d3.curveBundle.beta(n))
             .radius(d => d.y)
