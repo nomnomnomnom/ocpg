@@ -210,13 +210,23 @@ body.blog-body {
   background-color: white;
   background: none;
 }
-
 .blog {
   padding: 20px;
   max-width: 800px;
   margin: auto;
   min-height: 100vh;
   color: $articleTextColor;
+  &:before {
+    content: ' ';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    // background-color: red;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, transparent 10%, transparent 65%, rgba(0,0,0,0.08) 100%);
+  }
   a {
     text-decoration: underline;
     color: $blue2;
@@ -233,6 +243,7 @@ body.blog-body {
     left: 0;
     right: 0;
     top: 0;
+    background: linear-gradient(to right, black 0%, #5e7ca4 100%);
     h1 {
       max-width:800px;
       font-family: 'Open Sans', sans-serif;
