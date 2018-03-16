@@ -517,5 +517,5 @@ information, we'd be happy to have your input!
 <script>
   // Because I'm the last person remaining who prefers it this way.
   // It has nothing to do with typewriters at this point, I just like it better.
-  Array.from(document.getElementsByTagName('p')).forEach(p => p.innerHTML = p.innerHTML.replace(/([\.|\!|\?])/g, '$1&nbsp; '))
+  Array.from(document.getElementsByTagName('p')).forEach(p => p.innerHTML = p.innerHTML.replace(/([\.|\!|\?]) /g, '$1&nbsp; '))
 </script>

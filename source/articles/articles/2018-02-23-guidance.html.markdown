@@ -4,15 +4,13 @@ date: 2018-02-23 07:45 UTC
 tags:
 ---
 
-There are plenty of ways to help that don't involve 90 hours per week of grueling
-drudgery.  Start with 70 hours per week of exhausting drudgery instead (j/k).
-
 ## No task is too small or too big
 
 We're just starting out.  Here are some small tasks that will have
 big impact at this time:
 
-  1. Help **build and shape our community**.  Share this with others who will have
+  1. Help **build and shape our community**.  We're going to accomplish
+     feats never before possible.  Share this with others who will have
      positive influence on the way this community grows and interacts.
   1. **Start** to outline a process for research and data inclusion/exclusion.
   1. **Start** to outline a process for grading strength/quality of research.
@@ -26,9 +24,12 @@ big impact at this time:
   1. **Help** others who are doing any of these things with
      documentation/communication/just-being-there.
 
+Message us [on our subreddit](https://www.reddit.com/r/ocpgdiscussion), start by
+saying "hi" and come prepared with an idea about what you bring to the table.
+
 
 <script>
   // Because I'm the last person remaining who prefers it this way.
   // It has nothing to do with typewriters at this point, I just like it better.
-  Array.from(document.getElementsByTagName('p')).forEach(p => p.innerHTML = p.innerHTML.replace(/([\.|\!|\?])/g, '$1&nbsp; '))
+  Array.from(document.getElementsByTagName('p')).forEach(p => p.innerHTML = p.innerHTML.replace(/([\.|\!|\?]) /g, '$1&nbsp; '))
 </script>
